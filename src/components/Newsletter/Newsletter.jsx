@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { fabric } from "fabric";
 import axios from "axios";
 import 'svg2pdf.js'
+import CommentsSection from '../CommentsSection/CommentsSection';
 
 
-function Reader() {
+function NewsLetter(props) {
     const ref = useRef();
   
     const [canvasState, setCanvasState] = useState('')
@@ -12,12 +13,11 @@ function Reader() {
     const canvas = useRef(null);
   
     useEffect(() => {
-      let url = "http://localhost:8080/v1/events/json/"
+      let url = props.url
       axios
         .get(url)
         .then((response) => {
           setCanvasState(response.data)
-          console.log("cs=", response.data)
           canvas.current.loadFromJSON(response.data);
         })
   
@@ -33,7 +33,7 @@ function Reader() {
     }, []);
   
     const initCanvas = () => (
-      new fabric.StaticCanvas('canvas', {
+      new fabric.StaticCanvas(props.id, {
         height: 800,
         width: 800,
         backgroundColor: 'pink',
@@ -45,10 +45,11 @@ function Reader() {
     return (
       <>
         <div ref={ref}>
-          <canvas id="canvas" />
+          <canvas id={props.id} />
+          <CommentsSection />
         </div>
       </>
     )
   }
   
-  export default Reader;
+  export default NewsLetter;
