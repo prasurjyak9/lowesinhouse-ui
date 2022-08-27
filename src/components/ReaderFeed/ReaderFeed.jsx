@@ -1,5 +1,5 @@
-import NewsLetter from "../components/Newsletter/Newsletter";
 import { useState, useEffect } from "react";
+import NewsLetter from "../Newsletter/Newsletter";
 
 function ReaderFeed() {
     const urlList = ["http://localhost:8080/v1/events/lionjson/", "http://localhost:8080/v1/events/shinchanjson/",]

@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom'
 import EditableCanvas from './components/Editor/Editor';
 import NewsLetter from './components/Newsletter/Newsletter';
-import ReaderFeed from './ReaderFeed/ReaderFeed';
+import ReaderFeed from './components/ReaderFeed/ReaderFeed';
 
 
 function App() {
