@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { fabric } from "fabric";
 import axios from "axios";
-import 'svg2pdf.js'
+// import 'svg2pdf.js'
 import CommentsSection from '../CommentsSection/CommentsSection';
 
 
@@ -13,18 +13,22 @@ function NewsLetter(props) {
     const canvas = useRef(null);
   
     useEffect(() => {
-      let url = props.url
-      axios
-        .get(url)
-        .then((response) => {
-          setCanvasState(response.data)
-          canvas.current.loadFromJSON(response.data);
-        })
+      //console.log("hello = ", props.content)
+
+      // let url = props.url
+      // axios
+      //   .get(url)
+      //   .then((response) => {
+      //     setCanvasState(response.data)
+      //     canvas.current.loadFromJSON(response.data);
+      //   })
   
       canvas.current = initCanvas();
       canvas.current.on("mouse:over", () => {
         console.log('doing')
       }, []);
+
+      canvas.current.loadFromJSON(props.content);
   
       return () => {
         canvas.current.dispose();
@@ -41,12 +45,12 @@ function NewsLetter(props) {
         renderOnAddRemove: true,
       })
     );
-  
+
     return (
       <>
         <div ref={ref}>
           <canvas id={props.id} />
-          <CommentsSection />
+          <CommentsSection comments={props.comments}/>
         </div>
       </>
     )

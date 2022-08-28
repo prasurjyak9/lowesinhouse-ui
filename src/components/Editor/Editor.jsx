@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { fabric } from "fabric";
 import axios from "axios";
-import 'svg2pdf.js'
+// import 'svg2pdf.js'
 
 
 function EditableCanvas() {
@@ -66,7 +66,7 @@ function EditableCanvas() {
     }
   
     function convertToImg(e) {
-      const svg = canvas.current.toSVG();
+    //   const svg = canvas.current.toSVG();
       setDownloadLink(canvas.current.toDataURL({
         format: "png"
       }));
