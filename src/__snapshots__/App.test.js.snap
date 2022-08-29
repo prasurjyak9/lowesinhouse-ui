@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test scenario 6 1`] = `
+Array [
+  <div>
+    <canvas
+      id="canvas"
+    />
+    <button
+      onClick={[Function]}
+    >
+      Add Text
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Import
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Export
+    </button>
+  </div>,
+  <form>
+    <label>
+      Enter Image Url here : 
+    </label>
+    <input
+      id="input"
+    />
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Add Image With Url
+    </button>
+  </form>,
+  <a
+    download=""
+    href=""
+    onClick={[Function]}
+  >
+    Print As Image
+  </a>,
+  <button
+    onClick={[Function]}
+  >
+    Show as HTML
+  </button>,
+]
+`;
+
+exports[`test scenario 7 1`] = `
+<div>
+  <canvas />
+  <div>
+    <div
+      className="previous-comments"
+    />
+    <div
+      className="add-comment"
+    >
+      <input
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+      <button
+        onClick={[Function]}
+      >
+        Add Comment
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test scenario 8 1`] = `
+<div>
+  <div
+    className="previous-comments"
+  />
+  <div
+    className="add-comment"
+  >
+    <input
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <button
+      onClick={[Function]}
+    >
+      Add Comment
+    </button>
+  </div>
+</div>
+`;
+
+exports[`test scenario 9 1`] = `
+<div>
+  <div>
+    <canvas
+      id="canvas0"
+    />
+    <div>
+      <div
+        className="previous-comments"
+      />
+      <div
+        className="add-comment"
+      >
+        <input
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+        <button
+          onClick={[Function]}
+        >
+          Add Comment
+        </button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <canvas
+      id="canvas1"
+    />
+    <div>
+      <div
+        className="previous-comments"
+      />
+      <div
+        className="add-comment"
+      >
+        <input
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+        <button
+          onClick={[Function]}
+        >
+          Add Comment
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

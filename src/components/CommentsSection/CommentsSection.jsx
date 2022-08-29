@@ -31,7 +31,7 @@ function CommentsSection(props) {
     return (
         <div>
             <div className="previous-comments">
-                {comments.map((cmt, idx) => <p>{cmt.remarkId}: {cmt.remark}</p>)}
+                {comments?.map((cmt, idx) => <p>{cmt.remarkId}: {cmt.remark}</p>)}
             </div>
             <div className="add-comment">
                 <input type="text" onChange={handleCommentInput} value={inputValue}></input>
