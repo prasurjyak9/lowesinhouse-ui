@@ -19,7 +19,7 @@ function EditableCanvas() {
   
       canvas.current.on("mouse:over", () => {
         console.log('hello')
-      }, []);
+      }, []);      
   
       return () => {
         canvas.current.dispose();
@@ -41,7 +41,24 @@ function EditableCanvas() {
       let textBox = new fabric.IText("I'm a text piece", { left: 100, top: 100 });
       canvas.current.add(textBox);
     }
+
+    function addHorizontalLine(e) {
+        canvas.current.add(new fabric.Line([ 300, 250, 100, 250 ], {
+            left: 170,
+            top: 150,
+            stroke: 'black'
+        }));
+    }
   
+    function addVerticalLine(e) {
+        canvas.current.add(new fabric.Line([ 250, 100, 250, 300 ], {
+            left: 170,
+            top: 150,
+            stroke: 'black'
+        }));
+    }
+
+
     function importFromJson(e) {
       axios.get('http://localhost:8080/v1/events/json/')
         .then(response => {
@@ -102,6 +119,8 @@ function EditableCanvas() {
         <br />
 
         <ColourButton onClick={(e) => changeColour(e, '#f55')} />
+        <button onClick={addHorizontalLine}>Add Horizontal Line</button>
+        <button onClick={addVerticalLine}>Add Vertical Line</button>
       </>
     );
   }
