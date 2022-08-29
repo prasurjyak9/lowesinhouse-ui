@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { fabric } from "fabric";
 import axios from "axios";
-// import 'svg2pdf.js'
+import ColourButton from '../ColourButton/ColourButton';
 
 
 function EditableCanvas() {
@@ -10,6 +10,7 @@ function EditableCanvas() {
     const [canvasState, setCanvasState] = useState('');
     const [downloadLink, setDownloadLink] = useState('')
     const [downloadName, setDownloadName] = useState('')
+    const [canvasColour, setCanvasColour] = useState('pink')
   
     const canvas = useRef(null);
   
@@ -30,7 +31,7 @@ function EditableCanvas() {
       new fabric.Canvas('canvas', {
         height: 800,
         width: 800,
-        backgroundColor: 'pink',
+        backgroundColor: canvasColour,
         selection: false,
         renderOnAddRemove: true,
       })
@@ -78,6 +79,10 @@ function EditableCanvas() {
       const svg = canvas.current.toSVG();
       console.log(svg);
     }
+
+    function changeColour(e, colour) {
+        canvas.current.set('backgroundColor', colour).renderAll()
+    }
     
     return (
       <>
@@ -94,6 +99,9 @@ function EditableCanvas() {
         </form>
         <a href={downloadLink} download={downloadName} onClick={convertToImg}>Print As Image</a>
         <button onClick={showAsHTML}>Show as HTML</button>
+        <br />
+
+        <ColourButton onClick={(e) => changeColour(e, '#f55')} />
       </>
     );
   }
