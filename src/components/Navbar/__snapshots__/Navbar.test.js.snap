@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot testing Navbar test 1`] = `
+<div
+  class="outer-nav"
+  data-testid="navbar-test"
+>
+  <a
+    class="LandingPage"
+    href="/"
+  >
+    <img
+      alt="Lowes"
+      class="loweslogo"
+      id="logo"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Lowes_Companies_Logo.svg/1200px-Lowes_Companies_Logo.svg.png"
+    />
+  </a>
+  <h1
+    class="inhouse"
+  >
+    <b>
+      In House
+    </b>
+  </h1>
+</div>
+`;

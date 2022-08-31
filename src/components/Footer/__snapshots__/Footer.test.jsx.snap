@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input value test footer  1`] = `
+<div
+  class="footer-wrap"
+  data-testid="footer-test"
+>
+  <footer
+    class="section bg-footer"
+    data-testid="footer"
+  >
+    <div
+      class="text-center mt-5"
+    >
+      <p
+        class="footer-alt"
+      >
+        2022 © Lowe's Pvt Limited, All Rights Reserved
+      </p>
+    </div>
+  </footer>
+</div>
+`;

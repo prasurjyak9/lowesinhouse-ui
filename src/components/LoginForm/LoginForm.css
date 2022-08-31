@@ -1,0 +1,115 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+   input {
+     appearance:none;
+     background: none;
+     border: none;
+     outline: none;
+   }
+   .Login{
+     height:100vh;
+     display:flex;
+     align-items: center;
+     justify-content: center;
+     background-color: #8d8a8a;
+   }
+  
+   form {
+     display:block;
+     position:relative;
+   }
+  
+   form:after{
+     content:'';
+     display:block;
+     position:absolute;
+     top:-5px;
+     left:-5px;
+     right:-5px;
+     z-index: 5;
+     background-image: linear-gradient(120deg,white);
+   }
+    
+   form .form-inner{
+     position: relative;
+     display:block;
+     
+     padding:20px;
+   }
+  
+   form .form-inner h2{
+     color: #004792;
+     font-size:30px;
+     font-weight:900;
+     margin-bottom: 40px;
+   }
+  
+   form .form-inner  .form-group{
+     display:block;
+     width:300px;
+     margin-bottom: 25px;
+  
+   }
+
+   .form-inner  .form-group label{
+     display:block;
+     color: blue;
+     font-size:12px;
+     margin-bottom: 5px;
+     transition:0.4s;
+   }
+  
+   .form-inner .form-group:focus-within label {
+     color: #f8fafc;
+  
+   }
+   form .form-inner .form-group input {
+     display:block;
+     width:100%;
+     padding: 10px 15px;
+     background-color: #F8F8F8;
+     border-radius:8px;
+     transition:0.4s;
+  
+   }
+  
+   form .form-inner .form-group input:focus {
+     box-shadow: 0px 0px 3px rgba(0,0,0.2);
+   }
+  
+  form .form-inner input[type="submit"] ,button{
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-image:linear-gradient(120deg,white);
+    background-size: 100%;
+    background-position: 0;
+    transition: 0.4s;
+    color:#FFF;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  
+  form.form-inner input[type="submit"]:hover ,button{
+    background-position: 100% 0%;
+  }
+  .header-Dropdown {
+    position: absolute;
+    display: flex;
+    z-index: 1;
+    padding: 0px;
+    justify-content: flex-end;
+    padding-right: 45px;
+  }
+  @media screen and (max-width: 600px) {
+    .topnav a {
+      float: none;
+      width: 100%;
+    }
+  }
+ 
