@@ -19,7 +19,6 @@ function ReaderFeed() {
             })
     }, [])
 
-
     return (
         <div className="readersfeeddiv">
             <Link to={"login"} state={{ role: "designer" }}>
@@ -28,7 +27,7 @@ function ReaderFeed() {
             <Link to={"login"} state={{ role: "approver" }}>
                 Approver
             </Link>
-            {newsFeed.map((nl, idx) => <NewsLetter key={idx} content={nl.content} id={"canvas" + idx} comments={nl.remarks} key={"canvas" + idx} />)}
+            {newsFeed.map((nl, idx) => <NewsLetter key={idx} newsletterid={nl.newsletterId} content={nl.content} id={"canvas" + idx} comments={nl.remarks} key={"canvas" + idx} />)}
         </div>
     )
 }

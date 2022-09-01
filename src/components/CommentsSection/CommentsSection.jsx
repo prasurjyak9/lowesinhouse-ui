@@ -10,8 +10,21 @@ function CommentsSection(props) {
     const [inputValue, setInputValue] = useState('')
 
     useEffect(() => {
+        console.log(props)
+
+        // let url = "http://localhost:8080/"
+
+        // axios
+        //     .get(url)
+        //     .then((response) => {
+        //         console.log(response.data)
+        //         setComments(response.data)
+        //     })
+        //     .catch((err) => {
+        //         console.log("err =", err)
+        //     })
         setComments(props.comments)
-    }, [])
+    }, []);
 
     function handleCommentInput(e) {
         setNewComment(e.target.value)
@@ -22,12 +35,12 @@ function CommentsSection(props) {
         setComments([...comments, { remarkId: 111, remark: newComment }])
         setInputValue('')
 
-        // let url = "http://localhost:8080/remarks"
-        // axios.post(url, {
-        //     "remarkId": 111,
-        //     "remark": newComment,
-        //     "remarkNewsletterId": 12
-        // })
+        let url = "http://localhost:8080/remarks"
+        axios.post(url, {
+            "remarkId": 113,
+            "remark": newComment,
+            "remarkNewsletterId": props.newsletterid
+        })
     }
 
     return (

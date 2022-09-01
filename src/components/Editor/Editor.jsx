@@ -7,10 +7,11 @@ import { Typography, Tile, Pill } from '@backyard/react'
 import './Editor.css';
 import './EditorResponsive.css';
 import ColourButton from '../ColourButton/ColourButton';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function EditableCanvas(props) {
   const ref = useRef();
+  const location = useLocation()
 
   const navigate = useNavigate();
 
@@ -28,7 +29,13 @@ function EditableCanvas(props) {
 
   useEffect(() => {
     console.log("props =", props)
+    console.log("editor location =", location)
+
     canvas.current = initCanvas();
+
+    if (location.state.jsonContent) {
+      canvas.current.loadFromJSON(location.state.jsonContent)
+    }
 
     canvas.current.on("mouse:over", () => {
       console.log('hello')
@@ -165,10 +172,38 @@ function EditableCanvas(props) {
 
     axios.post(url, {
       newsletterId: 909199,
-      newsletterUserName: "4525440",
+      newsletterUserName: location.state.userName,
       status: 0,
       content: canvasJSON,
-      tag: 'leap'
+      tag: 'leap',
+      reviewerId: location.state.reviewerId,
+      approverId: location.state.approverId
+    }, config)
+  }
+
+  function submitNewsletter(e) {
+    let canvasJSON = JSON.stringify(canvas.current)
+    let url = "http://localhost:8080/designer/newsletter"
+
+    let token = localStorage.getItem("token")
+
+    const config = {
+      headers: { 
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json' 
+      }
+    };
+
+    console.log("Inside submit function")
+
+    axios.put(url, {
+      newsletterId: 909199,
+      newsletterUserName: location.state.userName,
+      status: 0,
+      content: canvasJSON,
+      tag: 'leap',
+      reviewerId: location.state.reviewerId,
+      approverId: location.state.approverId
     }, config)
 
   }
@@ -247,9 +282,9 @@ function EditableCanvas(props) {
                         <Grid.Row>
                           <Grid.Column>
                             <div id="toolscomponents">
-                              <Button className="toolsbuttons" elevation variant="tertiary" color="neutral" onClick={makeOblique}>
+                              <Button className="toolsbuttons" elevation variant="tertiary" color="neutral" onClick={submitNewsletter}>
                                 <img className="iconsimage" src="https://stage.carbon.lowes.com/bds/v3/documentation/downloads/icons/notes-filled.svg" height="80" width="80" />
-                                Oblique</Button>
+                                Submit</Button>
                             </div>
                           </Grid.Column>
                           <Grid.Column>

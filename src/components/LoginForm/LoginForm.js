@@ -47,7 +47,9 @@ function LoginForm(props) {
 
                 console.log("response =", res)
 
-                navigate("/designer", {token: "ttookkeenn"});
+                navigate("/designer", { state: { userName: empId } });
+                //<Navigate to={"/designer"} state={{userName: empId}} />
+
 
             }
             ).catch(err => {

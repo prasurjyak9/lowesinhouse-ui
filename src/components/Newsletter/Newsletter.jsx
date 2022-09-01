@@ -53,7 +53,7 @@ function NewsLetter(props) {
            </center>
            </Grid.Row>
            <Grid.Row>
-           <CommentsSection comments={props.comments}/>
+           <CommentsSection comments={props.comments} newsletterid={props.newsletterid}/>
            </Grid.Row>
          </Grid.Container>
          </div>
