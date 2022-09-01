@@ -52,20 +52,30 @@ export default function Status() {
     function handleEdit(newsletterId, status) {
         let token = localStorage.getItem("token")
 
-        let url = "http://localhost:8080/newsletter/1"
+        console.log("status page token =", token)
 
-        // const config = {
-        //   headers: { 
-        //     Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0NTI1NDQwIiwiZXhwIjoxNjYyMDE2MzU3LCJpYXQiOjE2NjE5ODAzNTd9.GKq6A-FqLFfsdgeHEik_bF2EncJhlRdFs6NMt7gmZL0`
-        //   }
-        // };
+        let url = "http://localhost:8080/newsletter/" + newsletterId
+
+        const config = {
+          headers: { 
+            Authorization: `Bearer ${token}`
+          }
+        };
     
         axios
-            .get(url)
+            .get(url, {
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Access-Control-Allow-Origin" : "*",
+                    "Content-type": "Application/json"
+                }
+            })
             .then((response) => {
                 console.log("res ==", response.data)
                 let content = response.data.content
-                navigate("/designer/authoritydetails/design", { state: { jsonContent: content, newsletterId: newsletterId, status: status} });
+                let reviewerId = response.data.reviewerId
+                let approverId = response.data.approverId
+                navigate("/designer/authoritydetails/design", { state: { jsonContent: content, newsletterId: newsletterId, status: status, reviewerId: reviewerId, approverId: approverId} });
             })
     }
 
@@ -74,10 +84,10 @@ export default function Status() {
             <Table>
                 <TableHead>
                     <TableRow>
-                        <TableHeader>Tag_Name </TableHeader>
-                        <TableHeader width={15}> NewsLetter_Id</TableHeader>
+                        <TableHeader>Tag Name </TableHeader>
+                        <TableHeader width={15}> NewsLetter Id</TableHeader>
                         <TableHeader>Status</TableHeader>
-                        <TableHeader>Edit Button</TableHeader>
+                        <TableHeader>Edit</TableHeader>
                         <TableHeader>Reviews</TableHeader>
                     </TableRow>
                 </TableHead>

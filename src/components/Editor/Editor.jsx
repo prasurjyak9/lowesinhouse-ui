@@ -48,7 +48,7 @@ function EditableCanvas(props) {
   }, []);
 
   const initCanvas = () => (
-    new fabric.Canvas('canvas', {
+    new fabric.Canvas('canvastext', {
       height: 800,
       width: 800,
 
@@ -170,10 +170,12 @@ function EditableCanvas(props) {
 
     console.log("Inside save function")
 
-    axios.post(url, {
+    console.log("loc ", location.state.status)
+
+    axios.put(url, {
       newsletterId: 909199,
       newsletterUserName: location.state.userName,
-      status: 0,
+      status: location.state.status,
       content: canvasJSON,
       tag: 'leap',
       reviewerId: location.state.reviewerId,
@@ -196,17 +198,51 @@ function EditableCanvas(props) {
 
     console.log("Inside submit function")
 
-    axios.put(url, {
-      newsletterId: 909199,
-      newsletterUserName: location.state.userName,
-      status: 0,
-      content: canvasJSON,
-      tag: 'leap',
-      reviewerId: location.state.reviewerId,
-      approverId: location.state.approverId
-    }, config)
+    axios
+      .put(url, {
+        newsletterId: 909199,
+        newsletterUserName: location.state.userName,
+        status: location.state.status,
+        content: canvasJSON,
+        tag: 'leap',
+        reviewerId: location.state.reviewerId,
+        approverId: location.state.approverId
+      }, config)
+      .catch((err) => {
+        axios.post(url, {
+          newsletterId: 909199,
+          newsletterUserName: location.state.userName,
+          status: location.state.status,
+          content: canvasJSON,
+          tag: 'leap',
+          reviewerId: location.state.reviewerId,
+          approverId: location.state.approverId
+        }, config)
+      })
 
-  }
+
+  //   if (location.state.status === "0") {
+  //     axios.post("http://localhost:8080/reviewer/newsletter", {
+  //       newsletterId: 909199,
+  //       newsletterUserName: location.state.userName,
+  //       status: location.state.status,
+  //       content: canvasJSON,
+  //       tag: 'leap',
+  //       reviewerId: location.state.reviewerId,
+  //       approverId: location.state.approverId
+  //     }, config)
+  //   } else if (location.state.status === "1") {
+  //     axios.post("http://localhost:8080/approver/newsletter", {
+  //       newsletterId: 909199,
+  //       newsletterUserName: location.state.userName,
+  //       status: location.state.status,
+  //       content: canvasJSON,
+  //       tag: 'leap',
+  //       reviewerId: location.state.reviewerId,
+  //       approverId: location.state.approverId
+  //     }, config)
+  //   }
+   }
 
   return (
     <>
@@ -219,7 +255,7 @@ function EditableCanvas(props) {
               <Grid.Column sm={7}>
                 <Tile variant="card" color="surface">
                   <div className="canvasholder">
-                    <canvas id="canvas" className="textplace" />
+                    <canvas id="canvastext" className="textplace" />
                   </div>
                 </Tile>
               </Grid.Column>

@@ -13,7 +13,8 @@ import ReviewerLandningPage from './components/ReviewerLandingPage/ReviewerLandi
 import LoginForm from './components/LoginForm/LoginForm';
 import DesignerDashboard from './components/DesignerDashboard/DesignerDashboard';
 import AuthorityDetailsForm from './components/AuthorityDetailsForm/AuthorityDetailsForm';
-import Review from './components/ReviewPage/ReviewPage';
+import Review from './components/Review/Review';
+import ApproverPage from './components/ApproverPage/ApproverPage';
 
 
 function App() {
@@ -32,9 +33,9 @@ function App() {
           <Route path="/designer/status" element={<Status />}></Route>
           <Route path="/pendingreviews" element={<Pendingreviews />}></Route>
           <Route path="/login" element={<LoginForm />}></Route>
-          <Route path="/review" element={<Review />}></Route>
+          <Route path="/approver" element={<ApproverPage />}></Route>
+          <Route path="/approver/review" element={<Review />}></Route>
         </Routes>
-
       </ThemeProvider>
     </div>
   )

@@ -25,7 +25,7 @@ function AuthorityDetailsForm(props) {
     }
 
     function handleSubmit(e) {
-        navigate("/designer/authoritydetails/design", { state: { reviewerId: reviewerId, approverId: approverId, userName: location.state.userName } });
+        navigate("/designer/authoritydetails/design", { state: { reviewerId: reviewerId, approverId: approverId, userName: location.state.userName, status: location.state.nlStatus } });
     }
 
     return (

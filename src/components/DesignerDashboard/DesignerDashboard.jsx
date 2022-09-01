@@ -14,7 +14,7 @@ function DesignerDashboard(props) {
 
     return (
         <>
-            <Link to={"authoritydetails"} state={{ role: "designer", userName: location.state.userName }}>
+            <Link to={"authoritydetails"} state={{ role: "designer", userName: location.state.userName, nlStatus: "0" }}>
                 Create Newsletter
             </Link>
             <br />

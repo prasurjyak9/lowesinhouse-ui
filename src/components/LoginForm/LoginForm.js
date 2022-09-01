@@ -20,7 +20,6 @@ function LoginForm(props) {
 
     const location = useLocation()
     const role = location.state.role
-    //console.log("role =", role)
 
     async function handleSubmit(e) {
         console.log("inside handle submit")
@@ -32,30 +31,21 @@ function LoginForm(props) {
                     "password": empPassword
                 }
             ).then((res) => {
-                // if (!res["data"]) {
-                //     alert("Wrong authentication");
-                //     window.location.reload();
-                // }
-                // else {
-                //     alert("Successful authentication")
-                //     window.location.reload();
-                // }
-
                 let token = res.data["jwt"]
-                console.log("token =", token)
                 localStorage.setItem("token", token)
 
+                console.log("token made =", localStorage.getItem("token"))
                 console.log("response =", res)
 
-                navigate("/designer", { state: { userName: empId } });
-                //<Navigate to={"/designer"} state={{userName: empId}} />
-
-
+                if (role == "designer") {
+                    navigate("/designer", { state: { userName: empId } });
+                } else {
+                    navigate("/approver", { state: { userName: empId } });
+                }
             }
             ).catch(err => {
                 console.log("err = ", err)
                 window.location.reload(false);
-
             });
 
             setEId("");
@@ -81,25 +71,16 @@ function LoginForm(props) {
                     </center>
                     <Typography variant="body_1">
                         SalesId
-</Typography>
+                    </Typography>
                     <div className="form-group">
                         <TextField type="text" maxLength={10} placeholder="Enter 7-Digit sale " size="medium" onChange={e => setEId(e.target.value)} />
                     </div>
                     <Password type="text" label="Password" onChange={e => setPassword(e.target.value)} />
                     <br></br>
                     <br></br>
-                    {/* <Dropdown
-                        defaultValue="3"
-                    >
-                        <Option value="1" onClick={() => setEmpRole("editor")}>Designer</Option>
-                        <Option value="2" onClick={() => setEmpRole("reviewer")}>Reviewer</Option>
-                        <Option value="3" onClick={() => setEmpRole("reader")}>Reader</Option>
-                    </Dropdown> */}
                     <br></br>
                     <center>
-                        <Button type="submit" fullWidth elevation>
-                            Login
-                        </Button>
+                        <Button type="submit" fullWidth elevation>Login</Button>
                     </center>
                 </div>
             </form>
