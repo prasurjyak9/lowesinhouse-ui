@@ -60,10 +60,11 @@ function Review(props) {
           }
         };
     
+        console.log("Reviewer approved... Doing put request")
         axios.put("http://localhost:8080/designer/newsletter", {
             "newsletterId": newsletter.newsletterId,
             "newsletterUserName": "4525440",
-            "status": 1,
+            "status": 2,
             "content": newsletter.content,
             "tag": "Leap",
             "reviewerId": newsletter.reviewerId,

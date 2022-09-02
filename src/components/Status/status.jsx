@@ -7,30 +7,16 @@ import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 
 
-export default function Status() {
+export default function Status(props) {
     const [newsletterDetails, setNewsletterDetails] = useState([])
 
     const navigate = useNavigate()
     const location = useLocation()
 
-    // useEffect(() => {
-    //     let url = "http://localhost:8080/pendingnewsletters"
-
-    //     let token = localStorage.getItem("token")
-
-    //     const config = {
-    //       headers: { 
-    //         Authorization: `Bearer ${token}`,
-    //         'Content-Type': 'application/json' 
-    //       }
-    //     };
-
-    //     axios.get(url, config)
-    //     }, [])
-
     useEffect(() => {
         let url = "http://localhost:8080/designer/pending/" + location.state.userName
-        console.log("url =", url)
+        console.log("status page location=", location.state)
+        console.log("status page props=", props)
 
         let token = localStorage.getItem("token")
     
@@ -75,7 +61,7 @@ export default function Status() {
                 let content = response.data.content
                 let reviewerId = response.data.reviewerId
                 let approverId = response.data.approverId
-                navigate("/designer/authoritydetails/design", { state: { jsonContent: content, newsletterId: newsletterId, status: status, reviewerId: reviewerId, approverId: approverId} });
+                navigate("/designer/authoritydetails/design", { state: {userName: location.state.userName, jsonContent: content, newsletterId: newsletterId, status: status, reviewerId: reviewerId, approverId: approverId} });
             })
     }
 

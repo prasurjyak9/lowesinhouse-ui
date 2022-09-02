@@ -28,7 +28,7 @@ function EditableCanvas(props) {
   const canvas = useRef(null);
 
   useEffect(() => {
-    console.log("props =", props)
+    console.log("editor props =", props)
     console.log("editor location =", location)
 
     canvas.current = initCanvas();
@@ -170,10 +170,12 @@ function EditableCanvas(props) {
 
     console.log("Inside save function")
 
+    console.log("Json =", canvasJSON)
+
     console.log("loc ", location.state.status)
 
     axios.put(url, {
-      newsletterId: 909199,
+      newsletterId: 123,
       newsletterUserName: location.state.userName,
       status: location.state.status,
       content: canvasJSON,
@@ -181,6 +183,18 @@ function EditableCanvas(props) {
       reviewerId: location.state.reviewerId,
       approverId: location.state.approverId
     }, config)
+    .catch((err) => {
+      console.log("Inside catch in editor")
+      axios.post(url, {
+        newsletterId: 123,
+        newsletterUserName: location.state.userName,
+        status: location.state.status,
+        content: canvasJSON,
+        tag: 'leap',
+        reviewerId: location.state.reviewerId,
+        approverId: location.state.approverId
+      }, config)
+    })
   }
 
   function submitNewsletter(e) {

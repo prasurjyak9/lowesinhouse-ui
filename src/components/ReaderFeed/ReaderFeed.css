@@ -1,5 +1,28 @@
 .readersfeeddiv{
     
    background-color: #01216a;
+   /* align-content: center; */
+   text-align: center;
     
   }
+
+  .reader-button
+  {
+   display: block; 
+   width: 20%;
+   margin: auto;
+   margin: 1%;
+  }
+  .readerfeed-buttongroupdiv
+  {
+     text-align: center;
+  }
+.reader-designerlink,.reader-approverlink
+{
+   display: block; 
+   width: 20%;
+   margin: auto;
+   text-decoration: none;
+   color: white;
+   ;
+}
