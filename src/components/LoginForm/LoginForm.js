@@ -39,8 +39,10 @@ function LoginForm(props) {
 
                 if (role == "designer") {
                     navigate("/designer", { state: { userName: empId } });
-                } else {
+                } else if (role == "approver") {
                     navigate("/approver", { state: { userName: empId } });
+                } else if (role == "reviewer") {
+                    navigate("/reviewer", { state: {userName: empId} });
                 }
             }
             ).catch(err => {
@@ -75,7 +77,7 @@ function LoginForm(props) {
                     <div className="form-group">
                         <TextField type="text" maxLength={10} placeholder="Enter 7-Digit sale " size="medium" onChange={e => setEId(e.target.value)} />
                     </div>
-                    <Password type="text" label="Password" onChange={e => setPassword(e.target.value)} />
+                    <Password type="password" label="Password" onChange={e => setPassword(e.target.value)} />
                     <br></br>
                     <br></br>
                     <br></br>

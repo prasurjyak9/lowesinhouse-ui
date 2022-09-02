@@ -7,7 +7,7 @@ import { ThemeProvider } from '@backyard/react'
 import { GlobalStyles } from './Globals'
 import Navbar from './components/Navbar/Navbar';
 import Pendingreviews from './components/PendingReviews/pendingreviews';
-import Status from './components/Status/status';
+import Status from './components/Status/Status';
 import Footer from './components/Footer/Footer';
 import ReviewerLandningPage from './components/ReviewerLandingPage/ReviewerLandingPage'
 import LoginForm from './components/LoginForm/LoginForm';
